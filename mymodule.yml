@@ -1,0 +1,30 @@
+---
+- name: install and configure software on server
+  hosts: server3
+  #sudo: true
+  tasks:
+    
+    - name: Running python script to install software
+      script: ./mycode.py
+      register: my_output
+    
+    - name: debugging output
+      debug: msg="{{ my_output.stdout_lines}}"
+    
+    - name: execute local script on remote server java installation
+      script: /home/ec2-user/myansible/draft/myscript.sh
+      register: my_script_output
+
+    - name: debugging java installation
+      debug: msg="{{ my_script_output.stdout_lines}}"
+    
+    - name: execute local script on remote server tomcat installation
+      script: /home/ec2-user/myansible/draft/tomcatscript.sh
+      register: tomcat_script_output
+
+    - name: debugging tomcat installation
+      debug: msg="{{ tomcat_script_output.stdout_lines}}"
+       
+
+
+    

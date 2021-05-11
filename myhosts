@@ -1,0 +1,6 @@
+[dev]
+server2
+server3
+
+[prod]
+server2
